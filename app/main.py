@@ -1,6 +1,7 @@
 from __future__ import annotations
 import logging
-from datetime import datetime
+# from datetime import datetime
+from datetime import datetime, UTC
 
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
@@ -41,8 +42,10 @@ def health():
   payload = HealthResponse(
     status="ok",
     version=getattr(settings, "APP_VERSION", "0.0.0"),
-    timestamp=datetime.utcnow(),
+    timestamp = datetime.now(UTC),
+    # timestamp=datetime.utcnow(),
     message="service available",
   )
-  return JSONResponse(status_code=200, content=payload.dict())
+  # return JSONResponse(status_code=200, content=payload.dict())
+  return payload;
 
