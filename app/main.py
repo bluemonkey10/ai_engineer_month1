@@ -4,7 +4,6 @@ import logging
 from datetime import datetime, UTC
 
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
 
 try:
   from .config import settings
@@ -47,5 +46,6 @@ def health():
     message="service available",
   )
   # return JSONResponse(status_code=200, content=payload.dict())
-  return payload;
+  return payload
+
 
